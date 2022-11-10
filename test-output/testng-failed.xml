@@ -5,7 +5,7 @@
     <classes>
       <class name="test.TestAssignment">
         <methods>
-          <include name="Only4ForeignPlayers"/>
+          <include name="Only1WicketKeeper"/>
         </methods>
       </class> <!-- test.TestAssignment -->
     </classes>

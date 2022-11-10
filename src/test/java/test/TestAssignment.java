@@ -23,4 +23,21 @@ public class TestAssignment{
 
 		Assert.assertEquals(count, 4);
 	}
+	
+	@Test
+	public void Only1WicketKeeper() {
+		Response response = RestAssured.get("https://gist.githubusercontent.com/kumarpani/1e759f27ae302be92ad51ec09955e765/raw/184cef7125e6ef5a774e60de31479bb9b2884cb5/TeamRCB.json");
+		String resp = response.getBody().asString();
+		JsonPath jPath = new JsonPath(resp); 
+		int roleCount = jPath.getInt("player.size()"), count=0;
+		
+		for(int i=0; i <roleCount; i++) {
+			if(!jPath.getString("player["+i+"].role").equals("Wicket-keeper")) {
+				count++;
+				break;
+			}
+		}
+
+		Assert.assertEquals(count, 1);
+	}
 }
